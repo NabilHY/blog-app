@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   scope :five_recent_comments, ->(post) { Comment.where(post_id: post).order(created_at: :desc).limit(3) }
   
   def update_posts_counter
-    author.update(posts_counter: author.posts.count)
+    author.update(post_counter: author.posts.count)
   end
   
 end
