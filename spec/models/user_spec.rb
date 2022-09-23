@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'ffi'
 
 RSpec.describe User, type: :model do
 
