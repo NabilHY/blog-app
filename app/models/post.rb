@@ -6,6 +6,8 @@ class Post < ApplicationRecord
 
   scope :five_recent_comments, ->(post) { Comment.where(post_id: post).order(created_at: :desc).limit(3) }
 
+  validates :title, presence: { strict: true }, length: { minimum: 3, maximum: 250 } 
+
   def update_posts_counter
     author.update(post_counter: author.posts.count)
   end
