@@ -27,7 +27,7 @@ RSpec.describe 'Users', type: :request do
     it "renders 'show' template" do
       expect(response).to render_template(:show)
     end
-
+    #response body includes correct placeholder text
     it "has the correct placeholder text" do
       expect(response.body).to include('Users#show')
     end
