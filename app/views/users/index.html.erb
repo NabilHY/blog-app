@@ -1,14 +1,1 @@
-
-<div class="container">
-    <% @users.each do |user| %>
-        <div class="row align-items-center mt-2">
-            <img class="img-thumbnail col-1" src="<%= user.photo %>">
-            <div class="container border border-black col-10">
-                <div class="row">
-                    <p class="display-4 col"><%= user.name%></p>
-                    <p class="col mt-2">Number of Posts: <%= user.post_counter%></p>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
+<%= render partial:"users", locals: {users: @users} %>
