@@ -2,8 +2,10 @@
     <img class="img-thumbnail col-1" src="<%= user.photo %>">
     <div class="container border border-black col-10">
         <div class="row">
-            <p class="display-4 col"><%= user.name %></p>
-            <p class="col mt-2">Number of Posts: <%= user.post_counter %></p>
+            <%= link_to user_path(user.id), :action => 'go' do %>
+                <p class="display-4 col"><%= user.name %></p>
+            <% end %>
+            <p class="col mt-2 text-right">Number of Posts: <%= user.post_counter %></p>
         </div>
     </div>
 </div>
