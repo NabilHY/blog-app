@@ -1,1 +1,10 @@
-<p>Users#show</p>
+<%= render partial:"user", locals: {user: @user} %>
+<%= render partial:"bio", locals: {user: @user} %>
+<%= render partial:"posts/posts", locals: {posts: @posts} %>
+<%= link_to user_posts_path(@user.id), :action => 'go' do %>
+<div class="d-flex justify-content-center">
+    <button type="button" class = "btn btn-dark mb-2 mt-2">
+        See all posts
+    </button>
+</div>
+<% end %>

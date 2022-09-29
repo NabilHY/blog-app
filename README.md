@@ -1,19 +1,19 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Blog-App
 
-> Description the project.
+> The Blog app is a classic example of a blog website, a fully functional website that will show the list of posts and empowers readers to interact with them by adding comments and liking posts.
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Ruby
+- RoR
+- PostgreSQL, Rubocop
 
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
+[Coming Soon]()
 
 
 ### Getting started

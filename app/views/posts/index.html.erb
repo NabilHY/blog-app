@@ -1,1 +1,11 @@
-<p>Posts#index</p>
+<div class="container mt-4">
+<%= render partial:"users/user", locals: {user: @user} %>
+  <% @posts.each do |post| %>
+    <%= render partial:"post", locals: {post: post} %>
+    <div class="container border border-black">
+      <% post.most_recent_comments.each do |comment| %>
+        <%= render partial:"comments/comment", locals: {comment: comment} %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
