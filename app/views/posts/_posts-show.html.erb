@@ -1,0 +1,6 @@
+<div class="container">
+    <% posts.each do |post| %>
+        <%= render partial:"posts/post", locals: {post: post} %>
+        <%= render partial:"comments/comment", locals: {comments: comments} %>
+    <% end %>
+</div>
