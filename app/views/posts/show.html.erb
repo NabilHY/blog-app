@@ -1,11 +1,16 @@
 <div class="container">
     <%= render partial:"users/user", locals: {user: @user} %>
     <%= render partial:"posts/post", locals: {post: @post} %>
+    <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |form|%>
+      <%= form.submit "Like", class:"btn btn-secondary" %>
+    <% end %>
    <div class="card">
     <div class="card-header">
-      <h4><% @comments.each do |comment| %>
-        <h2><%= comment.author.name%>: <%= comment.text%></h2>
-      <%end%></h4>
+      <h4>
+        <% @comments.each do |comment| %>
+          <h2><%= comment.author.name%>: <%= comment.text%></h2>
+        <%end%>
+      </h4>
     </div>
     <div class="card-body">
       <p class="card-text"><%= render "comment_creation", comment: @post %></p>
