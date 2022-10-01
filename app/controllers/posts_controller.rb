@@ -16,7 +16,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-
+    @post.likes_counter = 0
+    @post.comment_counter = 0
     respond_to do |format|
       if @post.save
         format.html { redirect_to user_posts_path(user_id: @post.author_id), notice: 'Friend was successfully created.' }
