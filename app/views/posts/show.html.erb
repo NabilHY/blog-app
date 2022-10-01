@@ -1,12 +1,18 @@
 <div class="container">
     <%= render partial:"users/user", locals: {user: @user} %>
     <%= render partial:"posts/post", locals: {post: @post} %>
-    <% @comments.each do |comment| %>
-        <%= render partial:"comments/comment", locals:{comment: comment} %>
-    <% end %>
-    <div class="d-flex justify-content-center">
-    <button type="button" class = "btn btn-dark mb-2 mt-2">
-        Pagination
-    </button>
+   <div class="card">
+    <div class="card-header">
+      <h4><% @comments.each do |comment| %>
+        <h2><%= comment.author.name%>: <%= comment.text%></h2>
+      <%end%></h4>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= render "comment_creation", comment: @post %></p>
+    </div>
+    <div>
+      <%= link_to "Back to Posts", user_posts_path, class:"btn btn-dark" %>
+    </div>
+  </div>
 </div>
 </div>
