@@ -10,21 +10,17 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
 
-  def new
-    post = Post.new
-  end
+  def new; end
 
   def create
     @post = current_user.posts.new(post_params)
-<<<<<<< HEAD
     @post.likes_counter = 0
     @post.comment_counter = 0
-=======
-
->>>>>>> c38d85248c21e753f3d214779742cc222469800d
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_posts_path(user_id: @post.author_id), notice: 'Friend was successfully created.' }
+        format.html do
+          redirect_to user_posts_path(user_id: @post.author_id), notice: 'Friend was successfully created.'
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,5 +32,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
