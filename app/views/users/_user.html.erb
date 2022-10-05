@@ -1,4 +1,5 @@
-<div class="row align-items-center mt-2 ml-2">
+<div id="<%= dom_id user %>" class="row align-items-center mt-2 ml-2">
+    <% if user == current_user %>
     <img class="img-thumbnail col-1" src="<%= user.photo %>">
     <div class="container border border-black col-10">
         <div class="row">
@@ -8,4 +9,5 @@
             <p class="col mt-2 text-right">Number of Posts: <%= user.post_counter %></p>
         </div>
     </div>
+    <% end %>
 </div>
