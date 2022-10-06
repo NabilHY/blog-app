@@ -11,4 +11,9 @@ class User < ApplicationRecord
   validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :recent_posts, ->(user_id) { Post.where(author_id: user_id).order(created_at: :desc).limit(3) }
+
+  def admin?
+    self.role == 'admin'
+  end
+
 end

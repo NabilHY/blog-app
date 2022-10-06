@@ -14,8 +14,7 @@ class PostsController < ApplicationController
   def new; end
 
   def create
-    # @post = current_user.posts.new(post_params)
-    @post.author = current_user
+    @post = current_user.posts.new(post_params)
     respond_to do |format|
       if @post.save
         format.html do
@@ -29,7 +28,10 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @user = User.find(@post.author_id)
+    @user.post_counter -= 1
     @post.destroy
+    @user.save
     redirect_to user_posts_path(user_id: @post.author_id), notice: 'Post was successfully deleted.'
   end
 
