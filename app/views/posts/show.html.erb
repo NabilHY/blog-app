@@ -9,16 +9,18 @@
       <h4>
         <% @comments.each do |comment| %>
           <h2><%= comment.author.name %>: <%= comment.text %></h2>
-          <div class="d-flex justify-content-left">
-            <%= button_to "Delete", 
-            {
-              :controller => 'comments', 
-              :action => 'destroy', 
-              :id => comment.id,
-              :post_id => @post.id
-            },
-            method: :delete, class:"btn btn-danger" %>
-          </div>
+          <% if can? :manage, @post %>
+            <div class="d-flex justify-content-left">
+              <%= button_to "Delete", 
+              {
+                :controller => 'comments', 
+                :action => 'destroy', 
+                :id => comment.id,
+                :post_id => @post.id
+              },
+              method: :delete, class:"btn btn-danger" %>
+            </div>
+          <% end %>
         <% end %>
       </h4>
     </div>
