@@ -13,7 +13,6 @@ class User < ApplicationRecord
   scope :recent_posts, ->(user_id) { Post.where(author_id: user_id).order(created_at: :desc).limit(3) }
 
   def admin?
-    self.role == 'admin'
+    role == 'admin'
   end
-
 end

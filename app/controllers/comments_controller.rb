@@ -7,6 +7,16 @@ class CommentsController < ApplicationController
     else
       render :new, alert: 'Comment not saved'
     end
+    @post.update_comments_counter
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    @post.save
+    @post.update_comments_counter
+    redirect_to user_post_path(@post.author_id, @post.id), notice: 'Comment was successfully deleted.'
   end
 
   private
