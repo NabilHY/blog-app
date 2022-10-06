@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
@@ -13,13 +14,12 @@ class PostsController < ApplicationController
   def new; end
 
   def create
-    @post = current_user.posts.new(post_params)
-    @post.likes_counter = 0
-    @post.comment_counter = 0
+    # @post = current_user.posts.new(post_params)
+    @post.author = current_user
     respond_to do |format|
       if @post.save
         format.html do
-          redirect_to user_posts_path(user_id: @post.author_id), notice: 'Friend was successfully created.'
+          redirect_to user_posts_path(user_id: @post.author_id), notice: 'Post was successfully created.'
         end
       else
         format.html { render :new, status: :unprocessable_entity }
