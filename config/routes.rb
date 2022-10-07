@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
+
+  get 'api/user/:id/posts' => 'users#user_posts_api', format: 'json'
+
 end

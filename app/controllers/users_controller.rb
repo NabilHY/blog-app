@@ -9,4 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = User.recent_posts(params[:id])
   end
+
+  def user_posts_api
+    @posts = User.find(params[:id]).posts
+    render json: @posts, only: [:id, :author_id, :post_counter, :likes_counter, :title, :text], status: :ok
+  end
+
 end
