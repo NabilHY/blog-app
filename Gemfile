@@ -46,6 +46,8 @@ gem 'devise'
 
 gem 'cancancan'
 
+gem 'bcrypt'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
