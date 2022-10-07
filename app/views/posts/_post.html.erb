@@ -6,4 +6,14 @@
     <p><%= post.text %></p>
     <p>Likes: <%= post.likes_counter %></p>
     <p>Comments: <%= post.comment_counter %></p>
+    <% if can? :manage, @post %>
+        <div class="d-flex justify-content-left">
+            <%= button_to "Delete", 
+            {
+                :controller => 'posts', 
+                :action => 'destroy'
+            },
+            method: :delete, class:"btn btn-danger" %>
+        </div>
+    <% end %>
 </div>
