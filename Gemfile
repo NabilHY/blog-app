@@ -48,6 +48,8 @@ gem 'cancancan'
 
 gem 'bcrypt'
 
+gem 'jwt'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
