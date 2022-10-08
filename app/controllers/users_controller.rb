@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def user_posts_api
     @posts = User.find(params[:id]).posts
-    render json: @posts, only: [:id, :author_id, :post_counter, :likes_counter, :title, :text], status: :ok
+    render json: @posts, only: %i[id author_id post_counter likes_counter title text], status: :ok
   end
-
 end

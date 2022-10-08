@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def post_comments_api
     @post = Post.find(params[:id])
     @comments = @post.comments.includes([:author])
-    render json: @comments, only: [:id, :author_id, :post_id, :text], status: :ok
+    render json: @comments, only: %i[id author_id post_id text], status: :ok
   end
 
   private
