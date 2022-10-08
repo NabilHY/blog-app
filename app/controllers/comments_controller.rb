@@ -20,6 +20,17 @@ class CommentsController < ApplicationController
     redirect_to user_post_path(@post.author_id, @post.id), notice: 'Comment was successfully deleted.'
   end
 
+
+  def post_create_api
+    @post = Post.find(params[:id])
+    @comment = current_user.comments.new(comment_params)
+    if @comment.save
+      render json: @comment, only: [:id, :author_id, :post_id, :text], status: :ok
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def comment_params
