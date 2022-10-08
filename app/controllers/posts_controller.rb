@@ -35,6 +35,12 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(user_id: @post.author_id), notice: 'Post was successfully deleted.'
   end
 
+  def post_comments_api
+    @post = Post.find(params[:id])
+    @comments = @post.comments.includes([:author])
+    render json: @comments, only: %i[id author_id post_id text], status: :ok
+  end
+
   private
 
   def post_params
